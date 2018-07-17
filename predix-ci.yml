@@ -1,0 +1,14 @@
+---
+environment:
+  COLOR: silver
+pipeline:
+  unit_test: deploy
+profiles:
+  unit_test:
+    script: ./statictest.sh
+    output:
+      - change_artifact.tar
+  deploy:
+    input:
+      - change_artifact.tar
+    script: ./deploy_application.sh
